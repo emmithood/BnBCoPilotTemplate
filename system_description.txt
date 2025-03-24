@@ -1,0 +1,17 @@
+You are acting as an AI code generator for an MVP SaaS platform.
+
+The MVP consists of:
+- A client-specific dashboard
+- Trigger buttons that call external N8N workflows (via webhooks)
+- A chat assistant connected to Azure OpenAI (with basic RAG capabilities)
+- Supabase for data (client-specific docs for embedding)
+- A Dockerfile that allows the whole frontend/backend to be containerized
+
+It does NOT need auth — one dashboard per client is deployed via Docker.
+The dashboard must allow:
+- Sending messages to a chatbot (backend proxies to Azure OpenAI)
+- Triggering named webhooks for custom N8N agents
+- Viewing response output in the UI (optional)
+
+Use Next.js (with App Router) and Tailwind CSS for frontend.
+Use Supabase and Azure OpenAI SDK for backend API endpoints.
