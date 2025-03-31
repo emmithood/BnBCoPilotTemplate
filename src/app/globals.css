@@ -43,73 +43,125 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
+/* Wood-themed glassmorphism color palette */
 :root {
   --radius: 0.625rem;
-  --background: #f8f9fa;
-  --foreground: #212529;
-  --card: #ffffff;
-  --card-foreground: #212529;
-  --popover: #ffffff;
-  --popover-foreground: #212529;
-  --primary: #5d12d2; /* Boom purple */
+  /* Warm wood background with texture */
+  --background: #f5efe0;
+  --foreground: #4a3728;
+  
+  /* Glassmorphism card with tan wood tint */
+  --card: rgba(246, 236, 219, 0.7);
+  --card-foreground: #4a3728;
+  
+  /* Popover styling */
+  --popover: rgba(246, 236, 219, 0.8);
+  --popover-foreground: #4a3728;
+  
+  /* Primary color - rich wood brown */
+  --primary: #8b5a2b; 
   --primary-foreground: #ffffff;
-  --secondary: #f5f0ff; /* Light purple for secondary backgrounds */
-  --secondary-foreground: #5d12d2;
-  --muted: #f8f9fa;
-  --muted-foreground: #6c757d;
-  --accent: #7e3ffa; /* Lighter purple for accents */
+  
+  /* Secondary color - lighter wood tone */
+  --secondary: rgba(211, 184, 155, 0.4); 
+  --secondary-foreground: #6c4a28;
+  
+  /* Muted tones */
+  --muted: rgba(222, 215, 200, 0.6);
+  --muted-foreground: #7c6855;
+  
+  /* Accent color - golden wood */
+  --accent: #b28346; 
   --accent-foreground: #ffffff;
-  --destructive: #dc3545;
-  --border: #e9ecef;
-  --input: #e9ecef;
-  --ring: #5d12d2;
-  --chart-1: #5d12d2;
-  --chart-2: #7e3ffa;
-  --chart-3: #9d71fb;
-  --chart-4: #c8b3fe;
-  --chart-5: #e6dcff;
-  --sidebar: #ffffff;
-  --sidebar-foreground: #212529;
-  --sidebar-primary: #5d12d2;
+  
+  /* Other utility colors */
+  --destructive: #be5a3f;
+  --border: rgba(177, 157, 131, 0.3);
+  --input: rgba(222, 215, 200, 0.6);
+  --ring: #8b5a2b;
+  
+  /* Chart colors - wood palette */
+  --chart-1: #8b5a2b;
+  --chart-2: #b28346;
+  --chart-3: #c9a66b;
+  --chart-4: #dbc298;
+  --chart-5: #ede0c9;
+  
+  /* Sidebar styling */
+  --sidebar: rgba(237, 224, 201, 0.6);
+  --sidebar-foreground: #4a3728;
+  --sidebar-primary: #8b5a2b;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #f5f0ff;
-  --sidebar-accent-foreground: #5d12d2;
-  --sidebar-border: #e9ecef;
-  --sidebar-ring: #5d12d2;
+  --sidebar-accent: rgba(211, 184, 155, 0.4);
+  --sidebar-accent-foreground: #6c4a28;
+  --sidebar-border: rgba(177, 157, 131, 0.3);
+  --sidebar-ring: #8b5a2b;
 }
 
 .dark {
-  --background: #212529;
-  --foreground: #f8f9fa;
-  --card: #343a40;
-  --card-foreground: #f8f9fa;
-  --popover: #343a40;
-  --popover-foreground: #f8f9fa;
-  --primary: #7e3ffa; /* Lighter purple for dark mode */
-  --primary-foreground: #ffffff;
-  --secondary: #2d1a41; /* Dark purple for secondary backgrounds */
-  --secondary-foreground: #f8f9fa;
-  --muted: #343a40;
-  --muted-foreground: #adb5bd;
-  --accent: #9d71fb; /* Even lighter purple for accents */
-  --accent-foreground: #ffffff;
-  --destructive: #e35d6a;
-  --border: rgba(255, 255, 255, 0.1);
-  --input: rgba(255, 255, 255, 0.15);
-  --ring: #7e3ffa;
-  --chart-1: #7e3ffa;
-  --chart-2: #9d71fb;
-  --chart-3: #c8b3fe;
-  --chart-4: #e6dcff;
-  --chart-5: #f5f0ff;
-  --sidebar: #343a40;
-  --sidebar-foreground: #f8f9fa;
-  --sidebar-primary: #7e3ffa;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #2d1a41;
-  --sidebar-accent-foreground: #f8f9fa;
-  --sidebar-border: rgba(255, 255, 255, 0.1);
-  --sidebar-ring: #7e3ffa;
+  /* Darker wood theme for dark mode */
+  --background: #2c2319;
+  --foreground: #e6daca;
+  
+  /* Glassmorphism dark wood */
+  --card: rgba(68, 52, 36, 0.7);
+  --card-foreground: #e6daca;
+  
+  /* Popover styling */
+  --popover: rgba(68, 52, 36, 0.8);
+  --popover-foreground: #e6daca;
+  
+  /* Primary color - golden wood accent */
+  --primary: #c9a66b; 
+  --primary-foreground: #2c2319;
+  
+  /* Secondary color - darker wood tone */
+  --secondary: rgba(119, 93, 66, 0.4); 
+  --secondary-foreground: #e6daca;
+  
+  /* Muted tones */
+  --muted: rgba(84, 69, 53, 0.6);
+  --muted-foreground: #c5b8a5;
+  
+  /* Accent color - light golden */
+  --accent: #dbc298; 
+  --accent-foreground: #2c2319;
+  
+  /* Other utility colors */
+  --destructive: #e57a63;
+  --border: rgba(119, 93, 66, 0.4);
+  --input: rgba(84, 69, 53, 0.6);
+  --ring: #c9a66b;
+  
+  /* Chart colors - wood palette */
+  --chart-1: #c9a66b;
+  --chart-2: #b28346;
+  --chart-3: #8b5a2b;
+  --chart-4: #6c4a28;
+  --chart-5: #4a3728;
+  
+  /* Sidebar styling */
+  --sidebar: rgba(68, 52, 36, 0.7);
+  --sidebar-foreground: #e6daca;
+  --sidebar-primary: #c9a66b;
+  --sidebar-primary-foreground: #2c2319;
+  --sidebar-accent: rgba(119, 93, 66, 0.4);
+  --sidebar-accent-foreground: #e6daca;
+  --sidebar-border: rgba(119, 93, 66, 0.4);
+  --sidebar-ring: #c9a66b;
+}
+
+/* Glassmorphism utility classes */
+.glass {
+  @apply backdrop-blur-md bg-opacity-70 border border-white/20 shadow-lg;
+}
+
+.glass-dark {
+  @apply backdrop-blur-md bg-opacity-50 border border-white/10 shadow-lg;
+}
+
+.wood-texture {
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%238b5a2b' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
 }
 
 @layer base {
@@ -117,6 +169,6 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground wood-texture;
   }
 }

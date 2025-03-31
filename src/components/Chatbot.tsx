@@ -105,7 +105,7 @@ export default function Chatbot() {
   };
 
   return (
-    <div className="flex flex-col h-full bg-white">
+    <div className="flex flex-col h-full glass backdrop-blur-md">
       {/* Messages Container */}
       <div className="flex-1 overflow-y-auto px-4 py-4">
         {messages.map((message, index) => (
@@ -115,17 +115,17 @@ export default function Chatbot() {
           >
             {/* Avatar for assistant/system */}
             {message.role !== 'user' && (
-              <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center mr-3 flex-shrink-0 text-xs">
+              <div className="w-8 h-8 rounded-full wood-texture bg-primary text-white flex items-center justify-center mr-3 flex-shrink-0 text-xs shadow-md border border-white/20">
                 {config.chat.brandName}
               </div>
             )}
             
             <div className={`max-w-[90%] ${
               message.role === 'user' 
-                ? 'bg-secondary text-gray-800 rounded-2xl rounded-tr-sm px-4 py-3' 
+                ? 'bg-secondary/70 backdrop-blur-sm text-card-foreground rounded-2xl rounded-tr-sm px-4 py-3 shadow-sm' 
                 : message.role === 'system'
-                  ? 'bg-white text-gray-800 border border-[#e9ecef] rounded-2xl rounded-tl-sm px-4 py-3'
-                  : 'bg-white text-gray-800 border border-[#e9ecef] rounded-2xl rounded-tl-sm px-4 py-3'
+                  ? 'bg-card/80 backdrop-blur-sm text-card-foreground border border-[rgba(177,157,131,0.3)] rounded-2xl rounded-tl-sm px-4 py-3 shadow-sm'
+                  : 'bg-card/80 backdrop-blur-sm text-card-foreground border border-[rgba(177,157,131,0.3)] rounded-2xl rounded-tl-sm px-4 py-3 shadow-sm'
             }`}>
               <div className="prose prose-sm">
                 <p className="whitespace-pre-wrap mb-2">{message.content}</p>
@@ -133,9 +133,9 @@ export default function Chatbot() {
               
               {/* Show sources if available */}
               {message.sources && message.sources.length > 0 && (
-                <div className="mt-3 pt-2 border-t border-gray-200">
-                  <p className="text-xs font-semibold text-gray-600 mb-1">Sources:</p>
-                  <ul className="list-disc list-inside text-xs text-gray-600">
+                <div className="mt-3 pt-2 border-t border-[rgba(177,157,131,0.2)]">
+                  <p className="text-xs font-semibold text-card-foreground/80 mb-1">Sources:</p>
+                  <ul className="list-disc list-inside text-xs text-card-foreground/70">
                     {message.sources.map((source, i) => (
                       <li key={i}>{source.title}</li>
                     ))}
@@ -143,14 +143,14 @@ export default function Chatbot() {
                 </div>
               )}
               
-              <p className="text-xs mt-2 text-gray-500">
+              <p className="text-xs mt-2 text-card-foreground/50">
                 {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
               </p>
             </div>
 
             {/* Avatar for user */}
             {message.role === 'user' && (
-              <div className="w-8 h-8 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center ml-3 flex-shrink-0">
+              <div className="w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center ml-3 flex-shrink-0 shadow-sm border border-[rgba(177,157,131,0.3)]">
                 U
               </div>
             )}
@@ -161,10 +161,10 @@ export default function Chatbot() {
         {/* Thinking indicator */}
         {isLoading && (
           <div className="flex items-center mb-6">
-            <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center mr-3 flex-shrink-0 text-xs">
+            <div className="w-8 h-8 rounded-full wood-texture bg-primary text-white flex items-center justify-center mr-3 flex-shrink-0 text-xs shadow-md border border-white/20">
               {config.chat.brandName}
             </div>
-            <div className="bg-white border border-[#e9ecef] px-4 py-3 rounded-2xl rounded-tl-sm">
+            <div className="bg-card/80 backdrop-blur-sm border border-[rgba(177,157,131,0.3)] px-4 py-3 rounded-2xl rounded-tl-sm shadow-sm">
               <div className="flex space-x-2">
                 <div className="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
                 <div className="w-2 h-2 rounded-full bg-primary animate-pulse delay-150"></div>
@@ -176,8 +176,8 @@ export default function Chatbot() {
       </div>
       
       {/* Input Form */}
-      <div className="border-t border-[#e9ecef] p-4">
-        <form onSubmit={handleSubmit} className="relative flex items-end bg-white rounded-xl border border-[#e9ecef] focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
+      <div className="border-t border-[rgba(177,157,131,0.3)] p-4 backdrop-blur-md">
+        <form onSubmit={handleSubmit} className="relative flex items-end glass backdrop-blur-md bg-card/80 rounded-xl border border-[rgba(177,157,131,0.3)] shadow-md focus-within:border-primary/60 focus-within:shadow-lg focus-within:ring-1 focus-within:ring-primary/30 transition-all">
           <textarea
             ref={inputRef}
             value={input}
@@ -186,19 +186,19 @@ export default function Chatbot() {
             placeholder={`Message ${config.appName}...`}
             disabled={isLoading}
             rows={1}
-            className="flex-1 p-3 pr-12 max-h-[120px] resize-none border-0 bg-transparent focus:ring-0 focus:outline-none text-gray-800"
+            className="flex-1 p-3 pr-12 max-h-[120px] resize-none border-0 bg-transparent focus:ring-0 focus:outline-none text-card-foreground placeholder-card-foreground/50"
           />
           <button
             type="submit"
             disabled={isLoading || !input.trim()}
-            className="absolute right-2 bottom-2 p-2 text-primary hover:bg-gray-100 rounded-lg transition-colors disabled:opacity-50"
+            className="absolute right-2 bottom-2 p-2 text-primary hover:bg-secondary/50 rounded-lg transition-colors disabled:opacity-50"
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
               <path d="M3.478 2.404a.75.75 0 0 0-.926.941l2.432 7.905H13.5a.75.75 0 0 1 0 1.5H4.984l-2.432 7.905a.75.75 0 0 0 .926.94 60.519 60.519 0 0 0 18.445-8.986.75.75 0 0 0 0-1.218A60.517 60.517 0 0 0 3.478 2.404Z" />
             </svg>
           </button>
         </form>
-        <p className="text-xs text-gray-500 mt-2 px-2">
+        <p className="text-xs text-card-foreground/60 mt-2 px-2">
           {config.chat.docTrainingNotice} Press Enter to send, Shift+Enter for a new line.
         </p>
       </div>

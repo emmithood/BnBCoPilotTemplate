@@ -9,7 +9,7 @@ export default function ChatPage() {
   const [showDocumentNotice, setShowDocumentNotice] = useState(true);
   const [noticeHeight, setNoticeHeight] = useState('auto');
   const [noticeOpacity, setNoticeOpacity] = useState(1);
-  
+
   useEffect(() => {
     if (!hasDocuments) {
       // Measure the height of the notice div first

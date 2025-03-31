@@ -51,26 +51,29 @@ export default function Sidebar() {
   const activePath = pathname === '/' ? '/chat' : pathname;
   
   return (
-    <aside className="w-64 bg-white border-r border-[#e9ecef] flex flex-col">
-      <div className="p-4 border-b border-[#e9ecef]">
+    <aside className="w-64 glass backdrop-blur-md bg-sidebar/70 border-r border-[rgba(177,157,131,0.3)] flex flex-col shadow-lg">
+      <div className="p-4 border-b border-[rgba(177,157,131,0.3)]">
         <Link 
           href="/" 
-          className="text-lg font-bold text-primary hover:text-accent transition-colors"
+          className="text-lg font-bold text-primary hover:text-accent transition-colors flex items-center"
         >
+          <span className="wood-texture bg-primary text-white h-8 w-8 mr-2 rounded-md flex items-center justify-center shadow-md">
+            {config.appName.charAt(0)}
+          </span>
           {config.appName}
         </Link>
       </div>
       
       <nav className="flex-1 p-4">
-        <ul className="space-y-2">
+        <ul className="space-y-3">
           {config.navigation.items.map((item) => (
             <li key={item.path}>
               <Link
                 href={item.path}
-                className={`flex items-center w-full p-3 rounded-xl transition-colors ${
+                className={`flex items-center w-full p-3 rounded-xl transition-all ${
                   activePath.startsWith(item.path)
-                    ? 'bg-secondary text-primary font-medium'
-                    : 'text-gray-600 hover:bg-gray-100'
+                    ? 'bg-secondary/80 backdrop-blur-sm text-primary font-medium shadow-md border border-[rgba(177,157,131,0.2)]'
+                    : 'text-sidebar-foreground hover:bg-secondary/30 hover:shadow-sm'
                 }`}
               >
                 {iconMap[item.path]}
@@ -81,8 +84,11 @@ export default function Sidebar() {
         </ul>
       </nav>
       
-      <div className="p-4 text-sm text-gray-500 border-t border-[#e9ecef]">
-        Version {config.appVersion}
+      <div className="p-4 text-sm text-sidebar-foreground/70 border-t border-[rgba(177,157,131,0.3)] backdrop-blur-sm">
+        <div className="flex items-center">
+          <span className="inline-block w-2 h-2 rounded-full bg-primary/80 mr-2"></span>
+          Version {config.appVersion}
+        </div>
       </div>
     </aside>
   );

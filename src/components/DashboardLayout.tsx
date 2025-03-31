@@ -38,9 +38,16 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           {/* Header */}
           <NavigationBar />
           
-          {/* Main content area */}
-          <main className="flex-1 overflow-auto bg-gray-50 p-6">
-            {children}
+          {/* Main content area with glassmorphism effect */}
+          <main className="flex-1 overflow-auto backdrop-blur-md p-6">
+            <div className="glassmorphism-container relative">
+              {/* Wood grain texture overlay */}
+              <div className="absolute inset-0 opacity-5 wood-texture pointer-events-none"></div>
+              {/* Content */}
+              <div className="relative z-10">
+                {children}
+              </div>
+            </div>
           </main>
         </div>
       </div>
