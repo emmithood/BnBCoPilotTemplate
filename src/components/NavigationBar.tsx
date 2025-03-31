@@ -6,7 +6,7 @@ import config from '@/lib/config';
 
 export default function NavigationBar() {
   return (
-    <header className="glass backdrop-blur-md bg-card/70 border-b border-[rgba(177,157,131,0.3)] py-3 px-6 flex justify-between items-center shadow-sm">
+    <header className="glass backdrop-blur-md bg-[#f6ecdb]/70 border-b border-[rgba(177,157,131,0.3)] py-3 px-6 flex justify-between items-center shadow-sm">
       <h1 className="text-xl font-bold text-primary">{config.appName}</h1>
       <div className="flex items-center space-x-4">
         {/* Placeholder for future header items */}

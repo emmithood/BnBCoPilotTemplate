@@ -124,8 +124,8 @@ export default function Chatbot() {
               message.role === 'user' 
                 ? 'bg-secondary/70 backdrop-blur-sm text-card-foreground rounded-2xl rounded-tr-sm px-4 py-3 shadow-sm' 
                 : message.role === 'system'
-                  ? 'bg-card/80 backdrop-blur-sm text-card-foreground border border-[rgba(177,157,131,0.3)] rounded-2xl rounded-tl-sm px-4 py-3 shadow-sm'
-                  : 'bg-card/80 backdrop-blur-sm text-card-foreground border border-[rgba(177,157,131,0.3)] rounded-2xl rounded-tl-sm px-4 py-3 shadow-sm'
+                  ? 'bg-[#f6ecdb]/80 backdrop-blur-sm text-card-foreground border border-[rgba(177,157,131,0.3)] rounded-2xl rounded-tl-sm px-4 py-3 shadow-sm'
+                  : 'bg-[#f6ecdb]/80 backdrop-blur-sm text-card-foreground border border-[rgba(177,157,131,0.3)] rounded-2xl rounded-tl-sm px-4 py-3 shadow-sm'
             }`}>
               <div className="prose prose-sm">
                 <p className="whitespace-pre-wrap mb-2">{message.content}</p>
@@ -164,7 +164,7 @@ export default function Chatbot() {
             <div className="w-8 h-8 rounded-full wood-texture bg-primary text-white flex items-center justify-center mr-3 flex-shrink-0 text-xs shadow-md border border-white/20">
               {config.chat.brandName}
             </div>
-            <div className="bg-card/80 backdrop-blur-sm border border-[rgba(177,157,131,0.3)] px-4 py-3 rounded-2xl rounded-tl-sm shadow-sm">
+            <div className="bg-[#f6ecdb]/80 backdrop-blur-sm border border-[rgba(177,157,131,0.3)] px-4 py-3 rounded-2xl rounded-tl-sm shadow-sm">
               <div className="flex space-x-2">
                 <div className="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
                 <div className="w-2 h-2 rounded-full bg-primary animate-pulse delay-150"></div>
@@ -177,7 +177,7 @@ export default function Chatbot() {
       
       {/* Input Form */}
       <div className="border-t border-[rgba(177,157,131,0.3)] p-4 backdrop-blur-md">
-        <form onSubmit={handleSubmit} className="relative flex items-end glass backdrop-blur-md bg-card/80 rounded-xl border border-[rgba(177,157,131,0.3)] shadow-md focus-within:border-primary/60 focus-within:shadow-lg focus-within:ring-1 focus-within:ring-primary/30 transition-all">
+        <form onSubmit={handleSubmit} className="relative flex items-end glass backdrop-blur-md bg-[#f6ecdb]/80 rounded-xl border border-[rgba(177,157,131,0.3)] shadow-md focus-within:border-primary/60 focus-within:shadow-lg focus-within:ring-1 focus-within:ring-primary/30 transition-all">
           <textarea
             ref={inputRef}
             value={input}

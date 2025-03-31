@@ -51,7 +51,7 @@ export default function Sidebar() {
   const activePath = pathname === '/' ? '/chat' : pathname;
   
   return (
-    <aside className="w-64 glass backdrop-blur-md bg-sidebar/70 border-r border-[rgba(177,157,131,0.3)] flex flex-col shadow-lg">
+    <aside className="w-64 glass backdrop-blur-md bg-[#ede0c9]/70 border-r border-[rgba(177,157,131,0.3)] flex flex-col shadow-lg">
       <div className="p-4 border-b border-[rgba(177,157,131,0.3)]">
         <Link 
           href="/" 

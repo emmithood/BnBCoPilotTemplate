@@ -12,7 +12,7 @@ interface AgentCardProps {
 
 export default function AgentCard({ title, slug, tasks, icon, description }: AgentCardProps) {
   return (
-    <div className="glass backdrop-blur-md bg-card/70 rounded-xl shadow-md border border-[rgba(177,157,131,0.3)] p-6 hover:shadow-lg hover:ring-1 hover:ring-primary/20 transition-all">
+    <div className="glass backdrop-blur-md bg-[#f6ecdb]/70 rounded-xl shadow-md border border-[rgba(177,157,131,0.3)] p-6 hover:shadow-lg hover:ring-1 hover:ring-primary/20 transition-all">
       <div className="flex items-start gap-4">
         {icon && (
           <div className="flex-shrink-0 w-12 h-12 rounded-lg wood-texture bg-primary/90 flex items-center justify-center text-white shadow-md">

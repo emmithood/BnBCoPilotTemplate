@@ -153,11 +153,11 @@
 
 /* Glassmorphism utility classes */
 .glass {
-  @apply backdrop-blur-md bg-opacity-70 border border-white/20 shadow-lg;
+  @apply backdrop-blur-md bg-white/70 border border-white/20 shadow-lg;
 }
 
 .glass-dark {
-  @apply backdrop-blur-md bg-opacity-50 border border-white/10 shadow-lg;
+  @apply backdrop-blur-md bg-white/50 border border-white/10 shadow-lg;
 }
 
 .wood-texture {

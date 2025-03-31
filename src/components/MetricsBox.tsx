@@ -25,7 +25,7 @@ export default function MetricsBox({
   isLoading = false
 }: MetricsBoxProps) {
   return (
-    <div className="glass backdrop-blur-md bg-card/70 rounded-2xl border border-[rgba(177,157,131,0.3)] p-5 transition-all hover:shadow-md">
+    <div className="glass backdrop-blur-md bg-[#f6ecdb]/70 rounded-2xl border border-[rgba(177,157,131,0.3)] p-5 transition-all hover:shadow-md">
       <div className="flex justify-between items-start mb-3">
         <h3 className="text-sm font-medium text-card-foreground/70">{title}</h3>
         {icon && <div className="text-primary p-2 bg-secondary/50 rounded-full">{icon}</div>}
