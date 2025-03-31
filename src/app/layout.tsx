@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "BWB COPILOT",
+  title: "BNB COPILOT",
   description: "AI-powered automation for property management",
 };
 

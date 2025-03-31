@@ -7,119 +7,14 @@ import PerformanceReview from '@/components/PerformanceReview';
 import WorkSummary from '@/components/WorkSummary';
 import PendingReviewTable from '@/components/PendingReviewTable';
 import TaskLog from '@/components/TaskLog';
+import config from '@/lib/config';
 
 export default function TemplateAgentPage() {
-  // Example data for the agent dashboard
-  const metricsData = {
-    tasksCompleted: {
-      title: "Tasks Completed",
-      value: 247,
-      change: { value: "12%", isPositive: true },
-      description: "Last 30 days"
-    },
-    timeSaved: {
-      title: "Time Saved",
-      value: 38,
-      suffix: "hrs",
-      change: { value: "8%", isPositive: true },
-      description: "Last 30 days"
-    },
-    accuracy: {
-      title: "Agent Performance",
-      value: "95.3%",
-      change: { value: "2.1%", isPositive: true },
-      description: "Accuracy rating"
-    }
-  };
+  // Use metrics data from config
+  const metricsData = config.metrics;
 
-  const workSummary = `The Template Agent has been highly productive over the past 30 days, completing 247 tasks with a 95.3% accuracy rate, which is a 2.1% improvement from the previous period.
-
-Key activities include:
-• Rewriting 45 property listings with improved SEO, resulting in better search visibility
-• Generating 32 blog posts about vacation rental tips and local attractions
-• Summarizing 170 guest reviews to identify common themes and areas for improvement
-
-The agent has saved approximately 38 hours of manual work, freeing up staff to focus on higher-value activities. The most significant improvement has been in the quality of SEO-optimized listings, which now include more detailed descriptions of amenities and better location highlights.`;
-
-  // Example pending review items
-  const pendingItems = [
-    {
-      id: '1',
-      title: 'Beachfront Villa Listing Rewrite',
-      type: 'Listing',
-      createdAt: '2025-03-22T10:30:00Z',
-      status: 'pending' as const
-    },
-    {
-      id: '2',
-      title: '5 Things to Do in Miami - Blog Post',
-      type: 'Blog Post',
-      createdAt: '2025-03-22T09:15:00Z',
-      status: 'pending' as const
-    },
-    {
-      id: '3',
-      title: 'February 2025 Guest Review Summary',
-      type: 'Review Summary',
-      createdAt: '2025-03-21T16:45:00Z',
-      status: 'pending' as const
-    }
-  ];
-
-  // Example task log
-  const taskLog = [
-    {
-      id: '1',
-      name: 'Mountain Cabin Listing Rewrite',
-      status: 'completed' as const,
-      timestamp: '2025-03-22T11:30:00Z',
-      duration: '45s',
-      details: 'Successfully rewrote the Mountain Cabin listing with enhanced SEO keywords, added more detailed amenity descriptions, and highlighted nearby attractions.'
-    },
-    {
-      id: '2',
-      name: 'Top 10 Beach Activities - Blog Post',
-      status: 'completed' as const,
-      timestamp: '2025-03-22T10:15:00Z',
-      duration: '1m 20s',
-      details: 'Generated a 1,200-word blog post about beach activities, including family-friendly options, water sports, and relaxation ideas.'
-    },
-    {
-      id: '3',
-      name: 'Downtown Loft Listing Rewrite',
-      status: 'failed' as const,
-      timestamp: '2025-03-22T09:45:00Z',
-      duration: '30s',
-      details: 'Error: Insufficient information about property amenities. Please provide more details about the loft features and then retry.'
-    },
-    {
-      id: '4',
-      name: 'March 2025 Review Summary',
-      status: 'running' as const,
-      timestamp: '2025-03-22T12:05:00Z'
-    },
-    {
-      id: '5',
-      name: 'Lakeside Retreat Listing Rewrite',
-      status: 'completed' as const,
-      timestamp: '2025-03-21T15:30:00Z',
-      duration: '38s'
-    },
-    {
-      id: '6',
-      name: 'Winter Getaway Ideas - Blog Post',
-      status: 'completed' as const,
-      timestamp: '2025-03-21T14:15:00Z',
-      duration: '1m 05s'
-    },
-    {
-      id: '7',
-      name: 'February 2025 Owner Report',
-      status: 'completed' as const,
-      timestamp: '2025-03-21T11:30:00Z',
-      duration: '2m 15s'
-    }
-  ];
+  // Use template agent data from config
+  const { workSummary, pendingItems, taskLog } = config.templateAgent;
 
   // Mock handlers for pending review actions
   const handleApprove = (id: string) => {
@@ -168,9 +63,9 @@ The agent has saved approximately 38 hours of manual work, freeing up staff to f
       {/* Performance Review & Work Summary */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
         <PerformanceReview 
-          value={38} 
+          value={metricsData.timeSaved.value} 
           metric="hours saved" 
-          change={{ value: "8%", isPositive: true }}
+          change={metricsData.timeSaved.change}
           description="Time saved compared to manual processing of the same tasks."
         />
         

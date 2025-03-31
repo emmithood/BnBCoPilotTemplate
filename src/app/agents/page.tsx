@@ -2,18 +2,15 @@
 
 import AgentCard from '@/components/AgentCard';
 import MetricsGrid from '@/components/MetricsGrid';
+import config from '@/lib/config';
 
 export default function AgentsPage() {
-  // Template agent data
-  const templateAgent = {
-    title: "Template Agent",
-    slug: "template",
-    description: "A versatile AI agent for property management tasks",
-    tasks: [
-      "Rewrite listings using SEO",
-      "Generate blog posts",
-      "Summarize guest reviews"
-    ],
+  // Get template agent data from config
+  const templateAgent = config.agents.templates[0];
+  
+  // Add the icon to the template agent
+  const templateAgentWithIcon = {
+    ...templateAgent,
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
         <path fillRule="evenodd" d="M4.5 3.75a3 3 0 00-3 3v10.5a3 3 0 003 3h15a3 3 0 003-3V6.75a3 3 0 00-3-3h-15zm4.125 3a2.25 2.25 0 100 4.5 2.25 2.25 0 000-4.5zm-3.873 8.703a4.126 4.126 0 017.746 0 .75.75 0 01-.351.92 7.47 7.47 0 01-3.522.877 7.47 7.47 0 01-3.522-.877.75.75 0 01-.351-.92zM15 8.25a.75.75 0 000 1.5h3.75a.75.75 0 000-1.5H15zM14.25 12a.75.75 0 01.75-.75h3.75a.75.75 0 010 1.5H15a.75.75 0 01-.75-.75zm.75 2.25a.75.75 0 000 1.5h3.75a.75.75 0 000-1.5H15z" clipRule="evenodd" />
@@ -21,28 +18,8 @@ export default function AgentsPage() {
     )
   };
 
-  // Example metrics data
-  const metricsData = {
-    tasksCompleted: {
-      title: "Tasks Completed",
-      value: 247,
-      change: { value: "12%", isPositive: true },
-      description: "Last 30 days"
-    },
-    timeSaved: {
-      title: "Time Saved",
-      value: 38,
-      suffix: "hrs",
-      change: { value: "8%", isPositive: true },
-      description: "Last 30 days"
-    },
-    accuracy: {
-      title: "Agent Performance",
-      value: "95.3%",
-      change: { value: "2.1%", isPositive: true },
-      description: "Accuracy rating"
-    }
-  };
+  // Use metrics data from config
+  const metricsData = config.metrics;
 
   return (
     <div className="max-w-6xl mx-auto">
@@ -68,7 +45,7 @@ export default function AgentsPage() {
       
       {/* Agent Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <AgentCard {...templateAgent} />
+        <AgentCard {...templateAgentWithIcon} />
         
         {/* Add New Agent Card */}
         <div className="bg-white rounded-xl shadow border border-dashed border-gray-300 p-6 flex flex-col items-center justify-center text-center hover:border-primary/30 transition-colors cursor-pointer">

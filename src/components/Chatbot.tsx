@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { enhancedFetch } from '@/lib/fetch';
+import config from '@/lib/config';
 
 type Message = {
   role: 'user' | 'assistant' | 'system';
@@ -14,7 +15,7 @@ export default function Chatbot() {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: 'system',
-      content: 'Hello! I\'m your BWB Copilot. I can help answer questions about your company processes, policies, and procedures. What would you like to know?',
+      content: config.chat.welcomeMessage,
       timestamp: new Date(),
     }
   ]);
@@ -104,7 +105,7 @@ export default function Chatbot() {
   };
 
   return (
-    <div className="flex flex-col h-[calc(100vh-220px)] bg-white">
+    <div className="flex flex-col h-full bg-white">
       {/* Messages Container */}
       <div className="flex-1 overflow-y-auto px-4 py-4">
         {messages.map((message, index) => (
@@ -114,8 +115,8 @@ export default function Chatbot() {
           >
             {/* Avatar for assistant/system */}
             {message.role !== 'user' && (
-              <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center mr-3 flex-shrink-0">
-                B
+              <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center mr-3 flex-shrink-0 text-xs">
+                {config.chat.brandName}
               </div>
             )}
             
@@ -160,8 +161,8 @@ export default function Chatbot() {
         {/* Thinking indicator */}
         {isLoading && (
           <div className="flex items-center mb-6">
-            <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center mr-3 flex-shrink-0">
-              B
+            <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center mr-3 flex-shrink-0 text-xs">
+              {config.chat.brandName}
             </div>
             <div className="bg-white border border-[#e9ecef] px-4 py-3 rounded-2xl rounded-tl-sm">
               <div className="flex space-x-2">
@@ -182,7 +183,7 @@ export default function Chatbot() {
             value={input}
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
-            placeholder="Message BWB Copilot..."
+            placeholder={`Message ${config.appName}...`}
             disabled={isLoading}
             rows={1}
             className="flex-1 p-3 pr-12 max-h-[120px] resize-none border-0 bg-transparent focus:ring-0 focus:outline-none text-gray-800"
@@ -198,7 +199,7 @@ export default function Chatbot() {
           </button>
         </form>
         <p className="text-xs text-gray-500 mt-2 px-2">
-          BWB Copilot is trained on your company documents and SOPs. Press Enter to send, Shift+Enter for a new line.
+          {config.chat.docTrainingNotice} Press Enter to send, Shift+Enter for a new line.
         </p>
       </div>
     </div>
