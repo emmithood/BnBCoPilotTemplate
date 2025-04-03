@@ -104,8 +104,8 @@ interface AppConfig {
  */
 const config: AppConfig = {
   // App branding
-  appName: "BNB COPILOT",
-  appVersion: "1.0.0",
+  appName: "STR COPILOT",
+  appVersion: "1.0.1",
   
   // Navigation
   navigation: {
@@ -285,7 +285,7 @@ The agent has saved approximately 38 hours of manual work, freeing up staff to f
   
   // Chat configuration
   chat: {
-    welcomeMessage: `# Welcome to BNB COPILOT! 👋
+    welcomeMessage: `# Welcome to STR COPILOT! 👋
 
 I'm your AI assistant for short-term rental management. I can help with:
 
@@ -295,7 +295,7 @@ I'm your AI assistant for short-term rental management. I can help with:
 - And much more!
 
 Just ask me anything related to your property management needs.`,
-    brandName: "BNB",
+    brandName: "STR",
     docTrainingNotice: "Our AI has been trained on your documentation to provide relevant answers. Upload more documents in the Documents section to improve responses.",
   },
 };
