@@ -2,6 +2,7 @@
 
 import AgentCard from '@/components/AgentCard';
 import MetricsGrid from '@/components/MetricsGrid';
+import PageTitleBar from '@/components/PageTitleBar';
 import config from '@/lib/config';
 
 export default function AgentsPage() {
@@ -22,42 +23,38 @@ export default function AgentsPage() {
   const metricsData = config.metrics;
 
   return (
-    <div className="max-w-6xl mx-auto">
-      <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold text-primary">AI Agents</h2>
-        <button className="bg-primary hover:bg-accent text-white font-medium py-2 px-4 rounded-xl transition-colors flex items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 mr-2">
-            <line x1="12" y1="5" x2="12" y2="19"></line>
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-          </svg>
-          Create New Agent
-        </button>
-      </div>
+    <>
+      <PageTitleBar title="AI Agents" />
       
-      {/* Metrics Grid */}
-      <div className="mb-8">
-        <MetricsGrid 
-          tasksCompleted={metricsData.tasksCompleted}
-          timeSaved={metricsData.timeSaved}
-          accuracy={metricsData.accuracy}
-        />
-      </div>
-      
-      {/* Agent Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <AgentCard {...templateAgentWithIcon} />
+      <div className="max-w-screen-lg mx-auto px-6 py-8">        
+        {/* Metrics Grid */}
+        <div className="mb-10">
+          <MetricsGrid 
+            tasksCompleted={metricsData.tasksCompleted}
+            timeSaved={metricsData.timeSaved}
+            accuracy={metricsData.accuracy}
+          />
+        </div>
         
-        {/* Add New Agent Card */}
-        <div className="bg-white rounded-xl shadow border border-dashed border-gray-300 p-6 flex flex-col items-center justify-center text-center hover:border-primary/30 transition-colors cursor-pointer">
-          <div className="w-12 h-12 rounded-full bg-secondary/50 flex items-center justify-center text-primary mb-3">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-              <path fillRule="evenodd" d="M12 3.75a.75.75 0 01.75.75v6.75h6.75a.75.75 0 010 1.5h-6.75v6.75a.75.75 0 01-1.5 0v-6.75H4.5a.75.75 0 010-1.5h6.75V4.5a.75.75 0 01.75-.75z" clipRule="evenodd" />
-            </svg>
+        {/* Agent Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="border-l-4 border-primary pl-4">
+            <AgentCard {...templateAgentWithIcon} />
           </div>
-          <h3 className="text-lg font-medium text-gray-800 mb-1">Create New Agent</h3>
-          <p className="text-gray-500 text-sm mb-4">Build a custom AI agent tailored to your needs</p>
+          
+          {/* Add New Agent Card */}
+          <div className="border-2 border-dashed border-muted rounded-xl p-6 flex flex-col items-center justify-center text-center hover:border-primary hover:bg-neutral-50 transition-all hover:shadow-lg hover:scale-[1.02] cursor-pointer">
+            <div className="w-16 h-16 rounded-full bg-neutral-100 flex items-center justify-center text-primary mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
+                <path fillRule="evenodd" d="M12 3.75a.75.75 0 01.75.75v6.75h6.75a.75.75 0 010 1.5h-6.75v6.75a.75.75 0 01-1.5 0v-6.75H4.5a.75.75 0 010-1.5h6.75V4.5a.75.75 0 01.75-.75z" clipRule="evenodd" />
+              </svg>
+            </div>
+            <h3 className="text-xl font-semibold text-neutral-800 mb-2">Create New Agent</h3>
+            <p className="text-base text-muted-foreground mb-4">Build a custom AI agent tailored to your needs</p>
+            <p className="text-xs text-neutral-500 mt-2">Launch a new AI-powered workflow tailored to your property needs</p>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

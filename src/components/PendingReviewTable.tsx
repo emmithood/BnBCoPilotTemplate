@@ -72,7 +72,7 @@ export default function PendingReviewTable({
                   {onPreview && (
                     <button 
                       onClick={() => onPreview(item.id)}
-                      className="text-blue-600 hover:text-blue-900"
+                      className="text-primary hover:text-primary/80 rounded-md px-3 py-1 text-sm transition-colors"
                     >
                       Preview
                     </button>
@@ -80,7 +80,7 @@ export default function PendingReviewTable({
                   {onApprove && (
                     <button 
                       onClick={() => onApprove(item.id)}
-                      className="text-green-600 hover:text-green-900"
+                      className="bg-[#4CAF50] text-white hover:bg-[#4CAF50]/90 rounded-md px-3 py-1 text-sm font-medium shadow-sm transition-colors"
                     >
                       Approve
                     </button>
@@ -88,7 +88,7 @@ export default function PendingReviewTable({
                   {onReject && (
                     <button 
                       onClick={() => onReject(item.id)}
-                      className="text-red-600 hover:text-red-900"
+                      className="bg-[#D84315] text-white hover:bg-[#D84315]/90 rounded-md px-3 py-1 text-sm font-medium shadow-sm transition-colors"
                     >
                       Reject
                     </button>

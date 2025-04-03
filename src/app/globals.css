@@ -1,8 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -43,125 +41,192 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
-/* Wood-themed glassmorphism color palette */
+/* Light and dark theme variables */
 :root {
-  --radius: 0.625rem;
-  /* Warm wood background with texture */
-  --background: #f5efe0;
-  --foreground: #4a3728;
+  --radius: 0.75rem;
   
-  /* Glassmorphism card with tan wood tint */
-  --card: rgba(246, 236, 219, 0.7);
-  --card-foreground: #4a3728;
+  /* Light theme foundations (default) */
+  --background: #FFFFFF;
+  --foreground: #121212;
+  
+  /* Card styling */
+  --card: #F8F9FA;
+  --card-foreground: #121212;
   
   /* Popover styling */
-  --popover: rgba(246, 236, 219, 0.8);
-  --popover-foreground: #4a3728;
+  --popover: #FFFFFF;
+  --popover-foreground: #121212;
   
-  /* Primary color - rich wood brown */
-  --primary: #8b5a2b; 
-  --primary-foreground: #ffffff;
+  /* Primary color - sky blue accent */
+  --primary: #1B9AAA;
+  --primary-foreground: #FFFFFF;
   
-  /* Secondary color - lighter wood tone */
-  --secondary: rgba(211, 184, 155, 0.4); 
-  --secondary-foreground: #6c4a28;
+  /* Secondary color - golden sand hospitality accent */
+  --secondary: #F4C95D;
+  --secondary-foreground: #121212;
   
   /* Muted tones */
-  --muted: rgba(222, 215, 200, 0.6);
-  --muted-foreground: #7c6855;
+  --muted: #F1F3F5;
+  --muted-foreground: #687076;
   
-  /* Accent color - golden wood */
-  --accent: #b28346; 
-  --accent-foreground: #ffffff;
+  /* Accent color - sky blue (same as primary for consistency) */
+  --accent: #1B9AAA;
+  --accent-foreground: #FFFFFF;
   
   /* Other utility colors */
-  --destructive: #be5a3f;
-  --border: rgba(177, 157, 131, 0.3);
-  --input: rgba(222, 215, 200, 0.6);
-  --ring: #8b5a2b;
+  --destructive: #E53935;
+  --success: #4CAF50;
+  --warning: #F4C95D;
+  --border: #E5E7EB;
+  --input: #F1F3F5;
+  --ring: #1B9AAA;
   
-  /* Chart colors - wood palette */
-  --chart-1: #8b5a2b;
-  --chart-2: #b28346;
-  --chart-3: #c9a66b;
-  --chart-4: #dbc298;
-  --chart-5: #ede0c9;
+  /* Chart colors - light mode palette */
+  --chart-1: #1B9AAA;
+  --chart-2: #F4C95D;
+  --chart-3: #4CAF50;
+  --chart-4: #E53935;
+  --chart-5: #687076;
   
   /* Sidebar styling */
-  --sidebar: rgba(237, 224, 201, 0.6);
-  --sidebar-foreground: #4a3728;
-  --sidebar-primary: #8b5a2b;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: rgba(211, 184, 155, 0.4);
-  --sidebar-accent-foreground: #6c4a28;
-  --sidebar-border: rgba(177, 157, 131, 0.3);
-  --sidebar-ring: #8b5a2b;
+  --sidebar: #F8F9FA;
+  --sidebar-foreground: #121212;
+  --sidebar-primary: #1B9AAA;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #1B9AAA;
+  --sidebar-accent-foreground: #FFFFFF;
+  --sidebar-border: #E5E7EB;
+  --sidebar-ring: #1B9AAA;
 }
 
+/* Dark theme overrides */
 .dark {
-  /* Darker wood theme for dark mode */
-  --background: #2c2319;
-  --foreground: #e6daca;
+  --background: #121212;  /* Charcoal black */
+  --foreground: #F5F5F5;  /* Warm white */
   
-  /* Glassmorphism dark wood */
-  --card: rgba(68, 52, 36, 0.7);
-  --card-foreground: #e6daca;
+  /* Card styling */
+  --card: #1E1E1E;        /* Dark slate */
+  --card-foreground: #F5F5F5;
   
   /* Popover styling */
-  --popover: rgba(68, 52, 36, 0.8);
-  --popover-foreground: #e6daca;
+  --popover: #1E1E1E;
+  --popover-foreground: #F5F5F5;
   
-  /* Primary color - golden wood accent */
-  --primary: #c9a66b; 
-  --primary-foreground: #2c2319;
+  /* Primary color - sky blue accent */
+  --primary: #1B9AAA;
+  --primary-foreground: #121212; /* For white buttons with blue accents */
   
-  /* Secondary color - darker wood tone */
-  --secondary: rgba(119, 93, 66, 0.4); 
-  --secondary-foreground: #e6daca;
+  /* Secondary color - golden sand hospitality accent */
+  --secondary: #F4C95D;
+  --secondary-foreground: #121212;
   
   /* Muted tones */
-  --muted: rgba(84, 69, 53, 0.6);
-  --muted-foreground: #c5b8a5;
+  --muted: #2A2A2A;       /* Subtle contrast */
+  --muted-foreground: #A0A0A0; /* Muted gray */
   
-  /* Accent color - light golden */
-  --accent: #dbc298; 
-  --accent-foreground: #2c2319;
+  /* Accent color - sky blue (same as primary for consistency) */
+  --accent: #1B9AAA;
+  --accent-foreground: #121212;
   
   /* Other utility colors */
-  --destructive: #e57a63;
-  --border: rgba(119, 93, 66, 0.4);
-  --input: rgba(84, 69, 53, 0.6);
-  --ring: #c9a66b;
+  --destructive: #E57373; /* Softer red for dark mode */
+  --success: #81C784;     /* Softer green for dark mode */
+  --warning: #F4C95D;     /* Golden sand */
+  --border: #2A2A2A;      /* Border/divider color */
+  --input: #2A2A2A;       /* Slightly lighter than background */
+  --ring: #1B9AAA;        /* Sky blue */
   
-  /* Chart colors - wood palette */
-  --chart-1: #c9a66b;
-  --chart-2: #b28346;
-  --chart-3: #8b5a2b;
-  --chart-4: #6c4a28;
-  --chart-5: #4a3728;
+  /* Chart colors - dark mode palette */
+  --chart-1: #1B9AAA;     /* Sky blue */
+  --chart-2: #F4C95D;     /* Golden sand */
+  --chart-3: #81C784;     /* Success green */
+  --chart-4: #E57373;     /* Error red */
+  --chart-5: #A0A0A0;     /* Muted gray */
   
   /* Sidebar styling */
-  --sidebar: rgba(68, 52, 36, 0.7);
-  --sidebar-foreground: #e6daca;
-  --sidebar-primary: #c9a66b;
-  --sidebar-primary-foreground: #2c2319;
-  --sidebar-accent: rgba(119, 93, 66, 0.4);
-  --sidebar-accent-foreground: #e6daca;
-  --sidebar-border: rgba(119, 93, 66, 0.4);
-  --sidebar-ring: #c9a66b;
+  --sidebar: #1E1E1E;     /* Dark slate */
+  --sidebar-foreground: #F5F5F5; /* Warm white */
+  --sidebar-primary: #1B9AAA; /* Sky blue */
+  --sidebar-primary-foreground: #121212;
+  --sidebar-accent: #1B9AAA; /* Sky blue */
+  --sidebar-accent-foreground: #121212;
+  --sidebar-border: #2A2A2A; /* Border/divider color */
+  --sidebar-ring: #1B9AAA;  /* Sky blue */
 }
 
-/* Glassmorphism utility classes */
-.glass {
-  @apply backdrop-blur-md bg-white/70 border border-white/20 shadow-lg;
-}
+/* Card and UI styling classes */
+@layer components {
+  /* Base card styles */
+  .card {
+    @apply bg-card rounded-lg border border-border shadow-md transition duration-200 hover:bg-card/90;
+  }
 
-.glass-dark {
-  @apply backdrop-blur-md bg-white/50 border border-white/10 shadow-lg;
-}
+  /* Panel styles (more squared, mission control-like) */
+  .panel {
+    @apply bg-card rounded-lg border border-border shadow-md p-5;
+  }
 
-.wood-texture {
-  @apply bg-wood-texture;
+  /* Glass effect variants */
+  .glass {
+    @apply backdrop-blur-lg bg-card/90 rounded-lg border border-border/80 shadow-md;
+  }
+
+  /* Themed glass variants */
+  .glass-primary {
+    @apply backdrop-blur-lg bg-primary/20 border border-primary/30 shadow-md;
+  }
+
+  .glass-secondary {
+    @apply backdrop-blur-lg bg-secondary/20 border border-secondary/30 shadow-md;
+  }
+
+  /* Button variants */
+  .btn-primary {
+    @apply bg-white text-background px-4 py-2 rounded-lg text-sm font-medium shadow-md 
+           hover:bg-white/90 transition-all duration-200 focus:ring-2 focus:ring-primary/50 focus:ring-offset-2
+           dark:bg-white dark:text-background dark:hover:bg-white/90 dark:focus:ring-primary/50;
+  }
+
+  .btn-secondary {
+    @apply bg-transparent border border-primary text-primary px-4 py-2 rounded-lg text-sm font-medium 
+           transition-all duration-200 hover:bg-primary/10 focus:ring-2 focus:ring-primary/50 focus:ring-offset-2
+           dark:text-primary dark:border-primary dark:hover:bg-primary/10 dark:focus:ring-primary/50;
+  }
+
+  .btn-success {
+    @apply bg-primary text-white px-3 py-1.5 rounded-lg text-sm font-medium shadow-sm hover:bg-primary/90 transition-all
+           dark:bg-primary dark:text-white dark:hover:bg-primary/90;
+  }
+
+  .btn-error {
+    @apply bg-destructive text-white px-3 py-1.5 rounded-lg text-sm font-medium shadow-sm hover:bg-destructive/90 transition-all
+           dark:bg-destructive dark:text-white dark:hover:bg-destructive/90;
+  }
+
+  /* Effect components */
+  .glow {
+    @apply shadow-md;
+  }
+  
+  .shimmer {
+    @apply animate-pulse bg-secondary/30;
+  }
+  
+  /* Navigation components */
+  .nav-item {
+    @apply flex items-center w-full p-3.5 rounded-lg transition-all duration-200;
+    @apply text-muted hover:bg-border hover:text-primary hover:shadow-sm;
+  }
+  
+  .nav-item-active {
+    @apply flex items-center w-full p-3.5 rounded-lg transition-all duration-200;
+    @apply bg-primary/20 text-primary font-medium shadow-sm border border-primary/30;
+  }
+
+  /* Legacy class for backward compatibility */
+  .wood-texture {
+    @apply bg-card/90 border border-border/80 shadow-md;
+  }
 }
 
 @layer base {
@@ -169,6 +234,45 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground wood-texture;
+    @apply bg-background text-foreground leading-relaxed;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold text-foreground;
+  }
+  h1 {
+    @apply text-3xl mb-6;
+  }
+  h2 {
+    @apply text-2xl mb-4;
+  }
+  h3 {
+    @apply text-xl mb-3;
+  }
+  p {
+    @apply leading-relaxed mb-4 text-muted;
+  }
+  a {
+    @apply text-primary hover:text-primary/80 transition-colors;
+  }
+  button, a.btn {
+    @apply transition-all duration-200;
+  }
+  input, textarea, select {
+    @apply bg-card border border-border rounded-lg p-2 focus:ring-2 focus:ring-primary/30 
+           focus:border-primary/60 outline-none;
+    color: var(--foreground);
+  }
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-background;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary/50;
   }
 }

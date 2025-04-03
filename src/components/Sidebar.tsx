@@ -51,13 +51,13 @@ export default function Sidebar() {
   const activePath = pathname === '/' ? '/chat' : pathname;
   
   return (
-    <aside className="w-64 glass backdrop-blur-md bg-[#ede0c9]/70 border-r border-[rgba(177,157,131,0.3)] flex flex-col shadow-lg">
-      <div className="p-4 border-b border-[rgba(177,157,131,0.3)]">
+    <aside className="w-64 bg-card/90 backdrop-blur-md border-r border-border flex flex-col shadow-md h-screen sticky top-0 left-0">
+      <div className="p-5 border-b border-border bg-gradient-to-r from-primary/10 to-transparent">
         <Link 
           href="/" 
-          className="text-lg font-bold text-primary hover:text-accent transition-colors flex items-center"
+          className="text-xl font-bold text-foreground hover:text-primary/80 transition-colors flex items-center"
         >
-          <span className="wood-texture bg-primary text-white h-8 w-8 mr-2 rounded-md flex items-center justify-center shadow-md">
+          <span className="bg-gradient-to-br from-primary to-primary/90 text-white h-10 w-10 mr-3 rounded-lg flex items-center justify-center shadow-md">
             {config.appName.charAt(0)}
           </span>
           {config.appName}
@@ -65,29 +65,36 @@ export default function Sidebar() {
       </div>
       
       <nav className="flex-1 p-4">
-        <ul className="space-y-3">
+        <ul className="space-y-4">
           {config.navigation.items.map((item) => (
             <li key={item.path}>
               <Link
                 href={item.path}
-                className={`flex items-center w-full p-3 rounded-xl transition-all ${
+                className={`flex items-center w-full p-3.5 rounded-lg transition-all duration-200 ${
                   activePath.startsWith(item.path)
-                    ? 'bg-secondary/80 backdrop-blur-sm text-primary font-medium shadow-md border border-[rgba(177,157,131,0.2)]'
-                    : 'text-sidebar-foreground hover:bg-secondary/30 hover:shadow-sm'
+                    ? 'bg-primary/20 text-foreground font-medium shadow-sm border border-primary/30' 
+                    : 'text-foreground/70 hover:bg-border hover:shadow-sm hover:text-primary'
                 }`}
+                title={item.name}
               >
-                {iconMap[item.path]}
-                <span className="ml-3">{item.name}</span>
+                <div className={`w-7 h-7 flex items-center justify-center rounded-lg ${
+                  activePath.startsWith(item.path) 
+                    ? 'text-primary' 
+                    : 'text-foreground/70'
+                }`}>
+                  {iconMap[item.path]}
+                </div>
+                <span className="ml-3.5 font-medium">{item.name}</span>
               </Link>
             </li>
           ))}
         </ul>
       </nav>
       
-      <div className="p-4 text-sm text-sidebar-foreground/70 border-t border-[rgba(177,157,131,0.3)] backdrop-blur-sm">
+      <div className="p-4 text-sm text-foreground/80 border-t border-border bg-border/50">
         <div className="flex items-center">
-          <span className="inline-block w-2 h-2 rounded-full bg-primary/80 mr-2"></span>
-          Version {config.appVersion}
+          <span className="inline-block w-2 h-2 rounded-full bg-primary animate-pulse mr-2.5"></span>
+          <span className="font-medium">Version {config.appVersion}</span>
         </div>
       </div>
     </aside>

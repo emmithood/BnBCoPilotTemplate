@@ -1,0 +1,29 @@
+- Use a `grid-cols-3 gap-4` container
+- For each metric card:
+  - Use `rounded-xl shadow-md p-6 bg-white`
+  - Value (e.g. "247") should be `text-3xl font-semibold`
+  - Label (e.g. "Tasks Completed") should be `text-sm text-muted-foreground`
+  - Add small neutral icon inside `bg-neutral-100 p-2 rounded-full` top-right
+- Template Agent Card:
+  - Limit to 2–3 lines of intro text
+  - Display `Agent Tasks:` with clear bullets and muted icons
+  - Add `border-t-4 border-primary`
+  - Optional soft gradient background
+  - Use `rounded-xl shadow-md hover:shadow-lg transition` on card
+  - Style button with full width OR right alignment: `View Dashboard →`
+- Create New Agent CTA:
+  - Style as a dashed border card: `border-2 border-dashed border-muted rounded-xl p-6`
+  - Add `hover:bg-neutral-50 transition`
+  - Move `+` icon to top-left or center and increase size
+  - Add light drop shadow on hover to increase "clickability"
+- Container + Background:
+  - Wrap all content in `max-w-screen-lg mx-auto px-6`
+  - Background: warm neutral gradient for depth: `bg-gradient-to-b from-[#fdfaf6] to-[#f2ede7]`
+  - Increase vertical spacing between cards
+- Typography:
+  - Use `text-3xl font-bold` for metric numbers
+  - Use `text-base text-muted-foreground` for support text
+  - Use `text-sm font-medium` for section subtitles
+  - Set base font to `Inter` if not already used
+- Hover & Transition Effects:
+  - Add polish to cards and buttons: `transition-all duration-200 ease-in-out hover:scale-[1.01]`

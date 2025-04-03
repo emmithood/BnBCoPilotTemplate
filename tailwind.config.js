@@ -5,26 +5,64 @@ module.exports = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
-  darkMode: 'class',
+  safelist: [
+    'bg-[#4CAF50]',
+    'hover:bg-[#4CAF50]/90',
+    'text-[#4CAF50]',
+    'bg-[#D84315]',
+    'hover:bg-[#D84315]/90',
+    'text-[#D84315]',
+    'text-foreground',
+    'text-muted-foreground',
+  ],
   theme: {
     extend: {
       colors: {
-        // Default colors - can be overridden by CSS variables
-        primary: '#8b5a2b',
-        secondary: 'rgba(211, 184, 155, 0.4)',
-        accent: '#b28346',
-        background: '#f5efe0',
+        // Anthropic-inspired dark theme palette
+        'background': '#121212',    // Charcoal Black (background)
+        'panel': '#1E1E1E',         // Dark Slate (panel/container)
+        'border': '#2A2A2A',        // Border/Divider
+        'primary': '#1B9AAA',       // Sky Blue (accent)
+        'secondary': '#F4C95D',     // Golden Sand (hospitality accent)
+        'success': '#4CAF50',       // Success Green
+        'error': '#D84315',         // Error Red
+        'warning': '#F4C95D',       // Warning Yellow
+        neutral: {
+          50: '#FAF8F6',
+          100: '#F0EBE5',
+          200: '#E6DFD7',
+          300: '#D1BFA3',
+          400: '#B8A89B',
+          500: '#9A8A7C',
+          600: '#7C6F63',
+          700: '#5E544B',
+          800: '#3F3932',
+          900: '#201D19',
+        },
       },
       backdropBlur: {
         xs: '2px',
       },
       animation: {
         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'shimmer': 'shimmer 2s linear infinite',
       },
-      backgroundImage: {
-        'wood-texture': "url('data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%238b5a2b' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E')",
+      keyframes: {
+        shimmer: {
+          '0%': { opacity: 0.5 },
+          '50%': { opacity: 0.7 },
+          '100%': { opacity: 0.5 },
+        },
       },
-    },
+      borderRadius: {
+        '2xl': '1rem',
+      },
+      boxShadow: {
+        'bubble': '0 2px 6px rgba(0, 0, 0, 0.05)',
+        'dark': '0 4px 8px rgba(0, 0, 0, 0.25)',
+        'glow': '0 0 8px rgba(27, 154, 170, 0.4)',
+      }
+    }
   },
   plugins: [],
 };

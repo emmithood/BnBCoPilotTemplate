@@ -37,7 +37,7 @@ export default function ChatPage() {
       {(!hasDocuments && showDocumentNotice) && (
         <div 
           id="document-notice"
-          className="bg-secondary border border-primary/20 rounded-2xl p-4 mb-6 text-center transition-all duration-500 ease-in-out" 
+          className="bg-secondary/80 border border-primary/20 rounded-2xl p-4 mb-6 text-center transition-all duration-500 ease-in-out dark:bg-secondary/30 dark:border-primary/30" 
           style={{ 
             opacity: noticeOpacity,
             height: showDocumentNotice ? noticeHeight : '0',
@@ -45,13 +45,13 @@ export default function ChatPage() {
             marginBottom: showDocumentNotice ? '1.5rem' : '0'
           }}
         >
-          <p className="text-primary">
+          <p className="text-primary dark:text-foreground font-medium">
             To get the most out of your AI assistant, please add your company documents (SOPs, guides, etc.) in the Documents tab to train the AI brain.
           </p>
         </div>
       )}
       <div 
-        className="bg-white rounded-2xl shadow-sm overflow-hidden border border-[#e9ecef] transition-all duration-500 ease-in-out"
+        className="bg-white rounded-2xl shadow-sm overflow-hidden border border-[#e9ecef] transition-all duration-500 ease-in-out dark:bg-card dark:border-border dark:shadow-md"
         style={{ 
           height: showDocumentNotice ? 'calc(100vh - 220px - ' + noticeHeight + ')' : 'calc(100vh - 220px)'
         }}

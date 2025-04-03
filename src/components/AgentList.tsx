@@ -66,18 +66,18 @@ export default function AgentList() {
   };
 
   return (
-    <div>
+    <div className="max-w-screen-lg mx-auto px-6 bg-gradient-to-b from-[#fdfaf6] to-[#f2ede7] py-8 rounded-xl">
       {/* Property selector dropdown and notes */}
-      <div className="mb-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="mb-10 grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label htmlFor="propertyId" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="propertyId" className="block text-sm font-medium text-neutral-700 mb-2">
             Select Property
           </label>
           <select
             id="propertyId"
             value={propertyId}
             onChange={(e) => setPropertyId(e.target.value)}
-            className="w-full px-4 py-2 border rounded-xl focus:ring-primary focus:border-primary"
+            className="w-full px-4 py-2.5 border rounded-xl focus:ring-primary focus:border-primary"
           >
             <option value="">Select a property</option>
             {config.agents.properties.map(property => (
@@ -87,14 +87,14 @@ export default function AgentList() {
         </div>
         
         <div>
-          <label htmlFor="notes" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="notes" className="block text-sm font-medium text-neutral-700 mb-2">
             Additional Instructions
           </label>
           <textarea
             id="notes"
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
-            className="w-full px-4 py-2 border rounded-xl focus:ring-primary focus:border-primary resize-none"
+            className="w-full px-4 py-2.5 border rounded-xl focus:ring-primary focus:border-primary resize-none"
             placeholder="Add any specific instructions or details..."
             rows={2}
           />
@@ -102,27 +102,27 @@ export default function AgentList() {
       </div>
       
       {/* Agent cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
         {agents.map((agent) => (
           <div 
             key={agent.slug}
-            className={`relative rounded-2xl transition-all overflow-hidden ${
+            className={`relative rounded-xl shadow-md transition-all overflow-hidden bg-white ${
               selectedAgent === agent.slug 
                 ? 'ring-2 ring-primary border-transparent'
-                : 'border border-[#e9ecef] hover:border-primary/20 hover:shadow-md'
+                : 'border-t-4 border-t-primary border hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-[1.01]'
             }`}
           >
             <div 
-              className="p-5 cursor-pointer"
+              className="p-6 cursor-pointer"
               onClick={() => setSelectedAgent(agent.slug === selectedAgent ? null : agent.slug)}
             >
               {/* Icon circle */}
-              <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center text-primary mb-3">
+              <div className="w-12 h-12 rounded-xl bg-primary flex items-center justify-center text-white mb-3 shadow-sm">
                 {agent.icon}
               </div>
               
-              <h3 className="text-lg font-bold mb-2 text-gray-800">{agent.name}</h3>
-              <p className="text-gray-600 mb-4 text-sm">{agent.description}</p>
+              <h3 className="text-xl font-semibold mb-2 text-neutral-800">{agent.name}</h3>
+              <p className="text-neutral-600 mb-5 text-sm leading-relaxed line-clamp-2">{agent.description}</p>
               
               <div className="flex justify-between items-center">
                 <AgentTriggerButton
@@ -133,15 +133,15 @@ export default function AgentList() {
                   additionalNotes={notes}
                   onSuccess={handleSuccess}
                   onError={handleError}
-                  className={`px-4 py-2 rounded-xl text-sm ${
+                  className={`px-4 py-2.5 rounded-lg text-sm font-medium ${
                     !propertyId 
-                      ? 'bg-gray-100 text-gray-400 cursor-not-allowed' 
-                      : 'bg-primary/10 text-primary hover:bg-primary hover:text-white transition-colors'
+                      ? 'bg-neutral-100 text-neutral-400 cursor-not-allowed' 
+                      : 'bg-primary text-white hover:bg-primary/90 transition-colors shadow-sm'
                   }`}
                   disabled={!propertyId}
                 />
                 
-                <div className="text-sm text-gray-500">
+                <div className="text-sm text-neutral-500">
                   {selectedAgent === agent.slug && (
                     <span className="flex items-center text-primary">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 mr-1">
@@ -155,14 +155,28 @@ export default function AgentList() {
             </div>
           </div>
         ))}
+        
+        {/* Create New Agent CTA Card */}
+        <div className="border-2 border-dashed border-muted rounded-xl p-6 hover:bg-neutral-50 transition-all duration-200 hover:shadow-md cursor-pointer flex flex-col items-center justify-center text-center h-[300px]">
+          <div className="w-16 h-16 rounded-full flex items-center justify-center bg-neutral-100 text-primary mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+          </div>
+          <h3 className="text-xl font-semibold mb-2 text-neutral-800">Create New Agent</h3>
+          <p className="text-base text-muted-foreground mb-4">Build a custom agent for your specific needs</p>
+          <button className="bg-neutral-100 hover:bg-neutral-200 text-primary px-4 py-2 rounded-lg transition-colors font-medium">
+            Get Started
+          </button>
+        </div>
       </div>
       
       {/* Results Display */}
       {result && (
-        <div className="mt-8 bg-white border border-[#e9ecef] rounded-2xl p-6 shadow-sm">
-          <h3 className="text-lg font-bold mb-4 text-primary">Agent Result</h3>
-          <div className="bg-gray-50 rounded-xl p-4 border border-[#e9ecef]">
-            <pre className="whitespace-pre-wrap text-sm text-gray-800">
+        <div className="mt-8 bg-white border border-neutral-200 rounded-xl p-6 shadow-md">
+          <h3 className="text-xl font-semibold mb-4 text-primary">Agent Result</h3>
+          <div className="bg-neutral-50 rounded-xl p-5 border border-neutral-200">
+            <pre className="whitespace-pre-wrap text-sm leading-relaxed text-neutral-800">
               {JSON.stringify(result, null, 2)}
             </pre>
           </div>
@@ -171,12 +185,12 @@ export default function AgentList() {
       
       {/* Error Display */}
       {error && (
-        <div className="mt-8 bg-red-50 border border-red-200 rounded-2xl p-6">
-          <h3 className="text-lg font-bold mb-2 text-red-800">Error</h3>
-          <p className="text-red-700">{error}</p>
+        <div className="mt-8 bg-red-50 border border-red-200 rounded-xl p-6 shadow-md">
+          <h3 className="text-xl font-semibold mb-3 text-red-800">Error</h3>
+          <p className="text-red-700 leading-relaxed">{error}</p>
           <button 
             onClick={() => setError(null)}
-            className="mt-3 text-sm text-red-800 hover:text-red-900 underline"
+            className="mt-4 text-sm font-medium px-4 py-2 bg-white text-red-700 rounded-lg hover:bg-red-100 transition-colors border border-red-200"
           >
             Dismiss
           </button>

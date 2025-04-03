@@ -7,6 +7,7 @@ import PerformanceReview from '@/components/PerformanceReview';
 import WorkSummary from '@/components/WorkSummary';
 import PendingReviewTable from '@/components/PendingReviewTable';
 import TaskLog from '@/components/TaskLog';
+import PageTitleBar from '@/components/PageTitleBar';
 import config from '@/lib/config';
 
 export default function TemplateAgentPage() {
@@ -34,61 +35,74 @@ export default function TemplateAgentPage() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto">
-      {/* Header with back button */}
-      <div className="flex items-center mb-6">
-        <Link 
-          href="/agents"
-          className="mr-4 p-2 rounded-full hover:bg-gray-100 transition-colors"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
-            <path fillRule="evenodd" d="M18 10a.75.75 0 01-.75.75H4.66l2.1 1.95a.75.75 0 11-1.02 1.1l-3.5-3.25a.75.75 0 010-1.1l3.5-3.25a.75.75 0 111.02 1.1l-2.1 1.95h12.59A.75.75 0 0118 10z" clipRule="evenodd" />
-          </svg>
-        </Link>
-        <div>
-          <h2 className="text-2xl font-bold text-primary">Template Agent</h2>
-          <p className="text-gray-600">Agent performance and task management</p>
+    <>
+      <PageTitleBar title="Template Agent" showBreadcrumbs={true} />
+      
+      <div className="max-w-screen-lg mx-auto px-6 py-8">
+        {/* Back button */}
+        <div className="mb-6">
+          <Link 
+            href="/agents"
+            className="inline-flex items-center text-primary hover:text-primary/80 transition-colors"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 mr-1">
+              <path fillRule="evenodd" d="M18 10a.75.75 0 01-.75.75H4.66l2.1 1.95a.75.75 0 11-1.02 1.1l-3.5-3.25a.75.75 0 010-1.1l3.5-3.25a.75.75 0 111.02 1.1l-2.1 1.95h12.59A.75.75 0 0118 10z" clipRule="evenodd" />
+            </svg>
+            <span>Back to Agents</span>
+          </Link>
+        </div>
+        
+        {/* Last 30 days heading */}
+        <div className="mb-6">
+          <div className="inline-block bg-neutral-100 px-4 py-2 rounded-lg text-sm font-medium text-neutral-700">
+            <span className="mr-2">📊</span>
+            Last 30 days
+          </div>
+        </div>
+        
+        {/* Metrics Grid */}
+        <div className="mb-10">
+          <MetricsGrid 
+            tasksCompleted={metricsData.tasksCompleted}
+            timeSaved={metricsData.timeSaved}
+            accuracy={metricsData.accuracy}
+          />
+        </div>
+        
+        {/* Performance Review & Work Summary */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
+          <PerformanceReview 
+            value={metricsData.timeSaved.value} 
+            metric="hours saved" 
+            change={metricsData.timeSaved.change}
+            description="Time saved compared to manual processing of the same tasks."
+          />
+          
+          <div className="border-l-4 border-primary pl-4">
+            <WorkSummary 
+              summary={workSummary} 
+              onRegenerate={handleRegenerateSummary}
+            />
+          </div>
+        </div>
+        
+        {/* Pending Review Table */}
+        <div className="mb-10">
+          <h3 className="text-lg font-semibold text-neutral-800 mb-4">Pending Items</h3>
+          <PendingReviewTable 
+            items={pendingItems}
+            onApprove={handleApprove}
+            onReject={handleReject}
+            onPreview={handlePreview}
+          />
+        </div>
+        
+        {/* Task Log */}
+        <div className="mb-8">
+          <h3 className="text-lg font-semibold text-neutral-800 mb-4">Task History</h3>
+          <TaskLog tasks={taskLog} />
         </div>
       </div>
-      
-      {/* Metrics Grid */}
-      <div className="mb-8">
-        <MetricsGrid 
-          tasksCompleted={metricsData.tasksCompleted}
-          timeSaved={metricsData.timeSaved}
-          accuracy={metricsData.accuracy}
-        />
-      </div>
-      
-      {/* Performance Review & Work Summary */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-        <PerformanceReview 
-          value={metricsData.timeSaved.value} 
-          metric="hours saved" 
-          change={metricsData.timeSaved.change}
-          description="Time saved compared to manual processing of the same tasks."
-        />
-        
-        <WorkSummary 
-          summary={workSummary} 
-          onRegenerate={handleRegenerateSummary}
-        />
-      </div>
-      
-      {/* Pending Review Table */}
-      <div className="mb-8">
-        <PendingReviewTable 
-          items={pendingItems}
-          onApprove={handleApprove}
-          onReject={handleReject}
-          onPreview={handlePreview}
-        />
-      </div>
-      
-      {/* Task Log */}
-      <div className="mb-8">
-        <TaskLog tasks={taskLog} />
-      </div>
-    </div>
+    </>
   );
 }
