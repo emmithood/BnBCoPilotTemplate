@@ -2,12 +2,12 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import MetricsGrid from '@/components/MetricsGrid';
-import PerformanceReview from '@/components/PerformanceReview';
-import WorkSummary from '@/components/WorkSummary';
-import PendingReviewTable from '@/components/PendingReviewTable';
-import TaskLog from '@/components/TaskLog';
-import PageTitleBar from '@/components/PageTitleBar';
+import MetricsGrid from '@/components/ui/MetricsGrid';
+import PerformanceReview from '@/components/performance/PerformanceReview';
+import WorkSummary from '@/components/dashboard/WorkSummary';
+import PendingReviewTable from '@/components/dashboard/PendingReviewTable';
+import TaskLog from '@/components/performance/TaskLog';
+import PageTitleBar from '@/components/layout/PageTitleBar';
 import config from '@/lib/config';
 
 export default function TemplateAgentPage() {
@@ -36,7 +36,7 @@ export default function TemplateAgentPage() {
 
   return (
     <>
-      <PageTitleBar title="Template Agent" showBreadcrumbs={true} />
+      <PageTitleBar title="Template Agent" showBreadcrumbs={false} />
       
       <div className="max-w-screen-lg mx-auto px-6 py-8">
         {/* Back button */}
@@ -69,6 +69,17 @@ export default function TemplateAgentPage() {
           />
         </div>
         
+        {/* Pending Review Table */}
+        <div className="mb-10">
+          <h3 className="text-lg font-semibold text-neutral-800 mb-4">Pending Items</h3>
+          <PendingReviewTable 
+            items={pendingItems}
+            onApprove={handleApprove}
+            onReject={handleReject}
+            onPreview={handlePreview}
+          />
+        </div>
+        
         {/* Performance Review & Work Summary */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
           <PerformanceReview 
@@ -84,17 +95,6 @@ export default function TemplateAgentPage() {
               onRegenerate={handleRegenerateSummary}
             />
           </div>
-        </div>
-        
-        {/* Pending Review Table */}
-        <div className="mb-10">
-          <h3 className="text-lg font-semibold text-neutral-800 mb-4">Pending Items</h3>
-          <PendingReviewTable 
-            items={pendingItems}
-            onApprove={handleApprove}
-            onReject={handleReject}
-            onPreview={handlePreview}
-          />
         </div>
         
         {/* Task Log */}

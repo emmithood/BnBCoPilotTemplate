@@ -1,6 +1,6 @@
 'use client';
 
-import MetricsBox from '@/components/MetricsBox';
+import MetricsBox from '@/components/ui/MetricsBox';
 
 interface MetricData {
   title: string;

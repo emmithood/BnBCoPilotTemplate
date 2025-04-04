@@ -165,8 +165,8 @@ export default function AgentList() {
           </div>
           <h3 className="text-xl font-semibold mb-2 text-neutral-800">Create New Agent</h3>
           <p className="text-base text-muted-foreground mb-4">Build a custom agent for your specific needs</p>
-          <button className="bg-neutral-100 hover:bg-neutral-200 text-primary px-4 py-2 rounded-lg transition-colors font-medium">
-            Get Started
+          <button className="bg-primary text-white hover:bg-primary/90 px-4 py-2 rounded-lg transition-colors font-medium shadow-sm dark:bg-white dark:text-black dark:hover:bg-white/90">
+            View Agent
           </button>
         </div>
       </div>

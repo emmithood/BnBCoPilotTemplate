@@ -1,7 +1,7 @@
 'use client';
 
-import DocumentUploader from "@/components/DocumentUploader";
-import DocumentList from "@/components/DocumentList";
+import DocumentUploader from "@/components/documents/DocumentUploader";
+import DocumentList from "@/components/documents/DocumentList";
 
 export default function DocumentsPage() {
   return (

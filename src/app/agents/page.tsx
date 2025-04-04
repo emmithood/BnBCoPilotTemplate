@@ -1,8 +1,7 @@
 'use client';
 
-import AgentCard from '@/components/AgentCard';
-import MetricsGrid from '@/components/MetricsGrid';
-import PageTitleBar from '@/components/PageTitleBar';
+import AgentCard from '@/components/agents/AgentCard';
+import MetricsGrid from '@/components/ui/MetricsGrid';
 import config from '@/lib/config';
 
 export default function AgentsPage() {
@@ -24,8 +23,6 @@ export default function AgentsPage() {
 
   return (
     <>
-      <PageTitleBar title="AI Agents" />
-      
       <div className="max-w-screen-lg mx-auto px-6 py-8">        
         {/* Metrics Grid */}
         <div className="mb-10">

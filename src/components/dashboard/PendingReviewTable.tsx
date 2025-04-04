@@ -23,9 +23,9 @@ export default function PendingReviewTable({
 }: PendingReviewTableProps) {
   if (items.length === 0) {
     return (
-      <div className="bg-white rounded-2xl border border-[#e9ecef] p-6 shadow-sm">
-        <h3 className="text-lg font-bold text-gray-800 mb-4">Pending Review</h3>
-        <div className="text-center p-6 text-gray-500">
+      <div className="bg-white dark:bg-card rounded-2xl border border-[#e9ecef] dark:border-border p-6 shadow-sm dark:shadow-md">
+        <h3 className="text-lg font-bold text-gray-800 dark:text-foreground mb-4">Pending Review</h3>
+        <div className="text-center p-6 text-gray-500 dark:text-foreground/70">
           <p>No items waiting for review</p>
         </div>
       </div>
@@ -33,46 +33,46 @@ export default function PendingReviewTable({
   }
 
   return (
-    <div className="bg-white rounded-2xl border border-[#e9ecef] p-6 shadow-sm">
-      <h3 className="text-lg font-bold text-gray-800 mb-4">Pending Review</h3>
+    <div className="bg-white dark:bg-card rounded-2xl border border-[#e9ecef] dark:border-border p-6 shadow-sm dark:shadow-md">
+      <h3 className="text-lg font-bold text-gray-800 dark:text-foreground mb-4">Pending Review</h3>
       
       <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-gray-200">
+        <table className="min-w-full divide-y divide-gray-200 dark:divide-border">
           <thead>
             <tr>
-              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-foreground/60 uppercase tracking-wider">
                 Title
               </th>
-              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-foreground/60 uppercase tracking-wider">
                 Type
               </th>
-              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-foreground/60 uppercase tracking-wider">
                 Date
               </th>
-              <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 dark:text-foreground/60 uppercase tracking-wider">
                 Actions
               </th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-200">
+          <tbody className="divide-y divide-gray-200 dark:divide-border/70">
             {items.map((item) => (
-              <tr key={item.id} className="hover:bg-gray-50">
+              <tr key={item.id} className="hover:bg-gray-50 dark:hover:bg-border/30">
                 <td className="px-4 py-3 whitespace-nowrap">
-                  <div className="text-sm font-medium text-gray-900">{item.title}</div>
+                  <div className="text-sm font-medium text-gray-900 dark:text-foreground">{item.title}</div>
                 </td>
                 <td className="px-4 py-3 whitespace-nowrap">
-                  <span className="inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800 px-2 py-1">
+                  <span className="inline-flex text-xs leading-5 font-semibold rounded-full bg-primary text-white dark:bg-primary/40 dark:text-white px-2 py-1">
                     {item.type}
                   </span>
                 </td>
-                <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-500">
+                <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-500 dark:text-foreground/70">
                   {new Date(item.createdAt).toLocaleDateString()}
                 </td>
                 <td className="px-4 py-3 whitespace-nowrap text-right text-sm font-medium space-x-2">
                   {onPreview && (
                     <button 
                       onClick={() => onPreview(item.id)}
-                      className="text-primary hover:text-primary/80 rounded-md px-3 py-1 text-sm transition-colors"
+                      className="text-primary hover:text-primary/80 dark:text-secondary dark:hover:text-secondary/80 rounded-md px-3 py-1 text-sm transition-colors"
                     >
                       Preview
                     </button>

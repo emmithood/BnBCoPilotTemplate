@@ -1,6 +1,6 @@
 'use client';
 
-import Chatbot from '@/components/Chatbot';
+import Chatbot from '@/components/chat/Chatbot';
 import { useState, useEffect } from 'react';
 
 export default function ChatPage() {
@@ -51,7 +51,7 @@ export default function ChatPage() {
         </div>
       )}
       <div 
-        className="bg-white rounded-2xl shadow-sm overflow-hidden border border-[#e9ecef] transition-all duration-500 ease-in-out dark:bg-card dark:border-border dark:shadow-md"
+        className="bg-white rounded-2xl shadow-sm overflow-hidden border border-[#e9ecef] transition-all duration-500 ease-in-out dark:bg-black dark:border-border dark:shadow-md"
         style={{ 
           height: showDocumentNotice ? 'calc(100vh - 220px - ' + noticeHeight + ')' : 'calc(100vh - 220px)'
         }}

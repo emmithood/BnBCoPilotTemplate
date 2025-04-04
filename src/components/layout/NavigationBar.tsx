@@ -6,9 +6,28 @@ import config from '@/lib/config';
 import ThemeToggle from './ThemeToggle';
 
 export default function NavigationBar() {
+  // Get current pathname to determine page title
+  const pathname = usePathname();
+  
+  // Generate page title based on current path
+  const getPageTitle = () => {
+    switch (true) {
+      case pathname === '/' || pathname === '/chat':
+        return 'Your Assistant';
+      case pathname.startsWith('/agents'):
+        return 'AI Agents';
+      case pathname.startsWith('/documents'):
+        return 'Documents';
+      case pathname.startsWith('/contact'):
+        return 'Contact';
+      default:
+        return 'Dashboard';
+    }
+  };
+
   return (
     <header className="bg-card/90 backdrop-blur-sm border-b border-border py-3.5 px-6 flex justify-between items-center shadow-md sticky top-0 z-10">
-      <h1 className="text-xl font-semibold text-foreground">{config.appName}</h1>
+      <h1 className="text-xl font-semibold text-foreground">{getPageTitle()}</h1>
       <div className="flex items-center space-x-5">
         {/* Theme Toggle (placeholder for now) */}
         <ThemeToggle />

@@ -19,14 +19,15 @@ module.exports = {
     extend: {
       colors: {
         // Anthropic-inspired dark theme palette
-        'background': '#121212',    // Charcoal Black (background)
+        'background': '#4A4A4A',    // Charcoal Black (background)
+        'surface': '#4A4A4A',         // Dark Slate (panel/container)
         'panel': '#1E1E1E',         // Dark Slate (panel/container)
         'border': '#2A2A2A',        // Border/Divider
         'primary': '#1B9AAA',       // Sky Blue (accent)
         'secondary': '#F4C95D',     // Golden Sand (hospitality accent)
         'success': '#4CAF50',       // Success Green
         'error': '#D84315',         // Error Red
-        'warning': '#F4C95D',       // Warning Yellow
+        'warning': '#F4C95D', 
         neutral: {
           50: '#FAF8F6',
           100: '#F0EBE5',

@@ -1,10 +1,10 @@
 # Frontend Guideline Document
 
-This document explains how we build the STR AI Dashboard’s frontend. We use plain everyday language so that anyone can understand how our frontend is set up, even if you’re not a tech person. Below you’ll find details about our overall frontend architecture, design style, component structure, state management, routing, performance optimizations, testing approaches, and more.
+This document explains how we build the STR AI Dashboard's frontend. We use plain everyday language so that anyone can understand how our frontend is set up, even if you're not a tech person. Below you'll find details about our overall frontend architecture, design style, component structure, state management, routing, performance optimizations, testing approaches, and more.
 
 ## 1. Frontend Architecture
 
-Our dashboard is built using modern web tools so that it’s reliable, responsive, and easy to maintain. At its core, we use Next.js (v15.2.3) with the App Router which allows us to handle dynamic routes and server-side rendering efficiently. We rely on React (v19) for creating user interfaces and TypeScript (v5) for making our code easier to understand and less error-prone.
+Our dashboard is built using modern web tools so that it's reliable, responsive, and easy to maintain. At its core, we use Next.js (v15.2.3) with the App Router which allows us to handle dynamic routes and server-side rendering efficiently. We rely on React (v19) for creating user interfaces and TypeScript (v5) for making our code easier to understand and less error-prone.
 
 **Key points:** • We use Next.js for fast page loading and dynamic routing. • React helps us build reusable UI components that are easy to test and update. • TypeScript ensures our code is well documented and easy to follow.
 
@@ -14,13 +14,13 @@ This architecture is designed to support scalability (it grows easily as we add 
 
 Our design is all about simplicity and usability. We follow key design principles including:
 
-• **Usability:** Our interface is clean and easy to navigate, with clear labels and icons guiding you to different features, like AI Chat, AI Agents, and Document Management. • **Accessibility:** We design with everyone in mind, ensuring that the interface can be used on different devices and by individuals with diverse needs. • **Responsiveness:** The layout adapts to different screen sizes so that whether you’re on a desktop or mobile device, the dashboard stays clear and intuitive.
+• **Usability:** Our interface is clean and easy to navigate, with clear labels and icons guiding you to different features, like AI Chat, AI Agents, and Document Management. • **Accessibility:** We design with everyone in mind, ensuring that the interface can be used on different devices and by individuals with diverse needs. • **Responsiveness:** The layout adapts to different screen sizes so that whether you're on a desktop or mobile device, the dashboard stays clear and intuitive.
 
-Each interface element is placed where you’d expect it, and interactive elements like buttons provide visual feedback (e.g., loading animations) so you always understand what’s happening.
+Each interface element is placed where you'd expect it, and interactive elements like buttons provide visual feedback (e.g., loading animations) so you always understand what's happening.
 
 ## 3. Styling and Theming
 
-Our styling is based on Tailwind CSS (v4), which lets us quickly apply consistent, modern styles using pre-built classes. We follow a flat, modern design style with a focus on clarity and visual appeal. Our inspiration comes from ChatGPT interfaces and Boomnow aesthetics, which means you’ll see clean lines, ample spacing, and a gentle color palette.
+Our styling is based on Tailwind CSS (v4), which lets us quickly apply consistent, modern styles using pre-built classes. We follow a flat, modern design style with a focus on clarity and visual appeal. Our inspiration comes from ChatGPT interfaces and Boomnow aesthetics, which means you'll see clean lines, ample spacing, and a gentle color palette.
 
 **Styling Approach:** • We use Tailwind CSS for a utility-first approach, meaning styles are written as class names rather than separate stylesheets. • The design is flat and modern, avoiding overly complex effects so that the UI remains simple and fast.
 
@@ -38,17 +38,36 @@ Our styling is based on Tailwind CSS (v4), which lets us quickly apply consisten
 
 We build our user interface using a component-based approach. This means that every part of the UI (for example, the chat interface, agent buttons, document uploader, etc.) is a separate, self-contained piece.
 
-**How we organize components:** • Components are grouped in a dedicated folder for ease of reuse and clarity. • Each component is isolated, making it easier to test or update without affecting other parts of the application. • This structure helps us keep the codebase manageable and allows developers to work on individual pieces without stepping on each other’s toes.
+**How we organize components:** 
+
+Our components are organized into logical folders based on their functionality and purpose:
+
+• `/components/layout` - Global layout components (Sidebar, NavigationBar, DashboardLayout, etc.)
+• `/components/chat` - Chat-related components (Chatbot)
+• `/components/agents` - Agent-related components (AgentCard, AgentList, etc.)
+• `/components/documents` - Document-related components
+• `/components/ui` - Reusable UI components (MetricsBox, MetricsGrid)
+• `/components/dashboard` - Dashboard-specific components
+• `/components/performance` - Performance metrics components
+• And more specialized component folders
+
+This folder organization provides several benefits:
+• Clear separation of concerns based on functionality
+• Improved discoverability for developers
+• Better code organization as the application grows
+• Self-documenting import paths (e.g., `@/components/layout/Sidebar`)
+
+For complete details on our component organization, see the [Component Structure Documentation](./COMPONENT_STRUCTURE.md).
 
 ## 5. State Management
 
-Our dashboard doesn’t have a huge learning curve with state management because we leverage React’s built-in state and Context API when needed. Components that handle things like chat inputs, agent responses, and document list management update their local state to reflect real-time communications.
+Our dashboard doesn't have a huge learning curve with state management because we leverage React's built-in state and Context API when needed. Components that handle things like chat inputs, agent responses, and document list management update their local state to reflect real-time communications.
 
 **The approach is simple:** • Local state management handles small pieces of interactive data like form inputs and button states. • For shared data that needs to be accessible across multiple components, we use the React Context API, ensuring a smooth user experience.
 
 ## 6. Routing and Navigation
 
-Navigating the dashboard is straightforward. We use Next.js’s dynamic routing system to move between pages. With a left sidebar that lists key sections like AI Chat, AI Agents, Documents, and Contact Us, users can easily jump from one part to another.
+Navigating the dashboard is straightforward. We use Next.js's dynamic routing system to move between pages. With a left sidebar that lists key sections like AI Chat, AI Agents, Documents, and Contact Us, users can easily jump from one part to another.
 
 **How routing works:** • The App Router in Next.js helps us build dynamic routes which are connected to functionality (for example, different AI agent routes are dynamically handled). • When you click a button or a tab, you are seamlessly taken to the corresponding part of the application without a page refresh, thanks to client-side routing.
 
@@ -56,7 +75,7 @@ Navigating the dashboard is straightforward. We use Next.js’s dynamic routing 
 
 We care deeply about having a fast and enjoyable user experience. The dashboard uses several strategies to keep response times low:
 
-• **Lazy Loading:** Components load only when they’re needed, reducing the initial load time. • **Code Splitting:** We split our code into manageable chunks so that users download only what is necessary. • **Asset Optimization:** Images and icons (like Lucide React Icons) are optimized to load quickly, and we leverage modern browser caching techniques.
+• **Lazy Loading:** Components load only when they're needed, reducing the initial load time. • **Code Splitting:** We split our code into manageable chunks so that users download only what is necessary. • **Asset Optimization:** Images and icons (like Lucide React Icons) are optimized to load quickly, and we leverage modern browser caching techniques.
 
 These steps help ensure that even when you interact with resource-heavy features like AI agents or chat interactions, the app remains snappy and responsive.
 
